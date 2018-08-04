@@ -1,79 +1,65 @@
 import React, {Component} from 'react';
 
-import {textareaAutoResize} from '../../assets/materialize/js/materialize'
+class Edit extends Component {
+	constructor() {
+		super();
 
-class EditForm extends Component {
-  constructor() {
-    super();
+		this.state = {
+		  title: '',
+		  text: '',
+		};
 
-    this.state = {
-      title: '',
-      text: '',
-    };
-
-    this.textareaRef = React.createRef();
-
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
+		this.textRef = React.createRef();
+		this.titleHandler = this.titleHandler.bind(this);
+		this.textHandler = this.textHandler.bind(this);
   }
-
-  handleChangeTitle(event) {
-    this.setState({title: event.target.value});
-  }
-
-  handleChangeText(event) {
-    this.setState({text: event.target.value});
-  }
-
-  componentDidMount() {
-    this.setState({title: this.props.data.title});
-    this.setState({text: this.props.data.text});
-
-    textareaAutoResize(this.textareaRef.current);
-  }
-
-  render() {
-    return (
-        <div>
-          <div className="card-image">
-            <div className="menu-icon__wrapper">
-              <ul>
-                <li><a className={"btn-floating hoverable" + ((!this.state.title || !this.state.text) ? " disabled" : "")} onClick={(e) => {
-                  e.preventDefault();
-                  if (this.state.title && this.state.text) {
-                    return this.props.editItem(this.state.title, this.state.text,
-                        this.props.data.index, this.props.handler);
-                  }
-                }}><i className="material-icons">save</i></a></li>
-                <li><a className="btn-floating hoverable" onClick={this.props.handler}><i className="material-icons">close</i></a></li>
-              </ul>
-            </div>
-          </div>
-        <div className="card-content">
-          <div className="row">
-
-            <div className="col s12">
-
-              <div className="input-field col s12">
-                <input name="title" onChange={this.handleChangeTitle}
-                       value={this.state.title} type="text"/>
-              </div>
-
-              <div className="input-field col s12">
-                <textarea ref={this.textareaRef} name="description" onChange={this.handleChangeText}
-                          value={this.state.text} cols="40" rows="4"
-                          className="materialize-textarea">
-                </textarea>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-        </div>
-    );
-  }
+	
+	titleHandler(event) {
+		this.setState({title: event.target.value});
+	}
+		
+	textHandler(event) {
+		this.setState({text: event.target.value});
+	}
+	
+	 componentDidMount() {
+    	this.setState({title: this.props.data.title});
+    	this.setState({text: this.props.data.text});
+  	}
+	
+	render() {
+		return (
+			<div className="box">
+			<input  name="title" onChange={this.titleHandler}
+						value={this.state.title}
+						type="text"
+					/>
+			
+        		<textarea
+					name="description"
+					ref={this.textRef}
+					value={this.state.text}
+					onChange={this.textHandler}>
+				</textarea>
+        		<button onClick={this.save} 
+					className="btn  new "
+					onClick={(e) => {
+                  		e.preventDefault();
+                  		if (this.state.title && this.state.text) 	{
+                    		return this.props.editItem(
+								this.state.title,
+								this.state.text,
+                        		this.props.data.index, 		this.props.handler);
+                  		}
+                	}}>
+					Save
+				</button>
+				<button  className="btn success" onClick={this.props.handler}>
+					Close
+				</button>
+      		</div>
+		)
+	}
 }
 
-export default EditForm;
+export default Edit;

@@ -1,3 +1,6 @@
+@import 'reset';
+@import 'fonts';
+
 body {
   margin: 0;
   padding: 0;
@@ -21,3 +24,188 @@ p {
 .hoverable {
   transition: box-shadow 0.3s;
 }
+
+//@font-face {
+//  font-family: 'Roboto';
+//  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+//  font-weight: normal;
+//  font-style: normal;
+//}
+
+body {
+  background-color: #fff;
+}
+
+.field {
+  	display: flex;
+  	padding:   10px;
+	box-sizing: border-box;
+  	width: 100%;
+  	margin: 0 auto;
+  	color: #fff;
+  	font-size: 1.3em;
+  	flex-direction: column;
+  	align-items: center;
+	justify-content: center;
+	
+	ul{
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		div{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			.box {
+				border: 2px solid #6d0584;
+				background: #e570e7; /* Old browsers */
+background: -moz-linear-gradient(top, #e570e7 0%, #c85ec7 47%, #a849a3 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #e570e7 0%,#c85ec7 47%,#a849a3 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #e570e7 0%,#c85ec7 47%,#a849a3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e570e7', endColorstr='#a849a3',GradientType=0 );
+  				margin-bottom: 20px;
+  				padding: 10px;
+  				max-width: 260px;
+				width: 100%;
+}
+		}
+	}
+}
+
+
+div.button-wrapper{
+	align-self: flex-end;
+	width: auto !important;
+	.btn{
+		background: #2c539e; /* Old browsers */
+background: -moz-linear-gradient(top, #2c539e 0%, #2c539e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #2c539e 0%,#2c539e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #2c539e 0%,#2c539e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c539e', endColorstr='#2c539e',GradientType=0 );
+		border: none;
+		cursor: pointer;
+		transition: 0.4s all ease-out;
+		&:hover{
+			
+			background: #a7cfdf; /* Old browsers */
+background: -moz-linear-gradient(top, #a7cfdf 0%, #23538a 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #a7cfdf 0%,#23538a 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #a7cfdf 0%,#23538a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 );
+		}
+	}
+	
+}
+.btn.new{
+	background: #2c539e; /* Old browsers */
+background: -moz-linear-gradient(top, #2c539e 0%, #2c539e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #2c539e 0%,#2c539e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #2c539e 0%,#2c539e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c539e', endColorstr='#2c539e',GradientType=0 );
+	margin-bottom: 25px;
+	border: none;
+	&:hover{
+		background: #099de2;
+	}
+}
+
+.box:last-child {
+  margin-bottom: 0;
+}
+
+button.btn {
+  margin-right: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 0.65em;
+  color: #fff;
+  outline: none;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.box.btnBox{
+	display: flex;
+}
+
+.box .text{
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.box p{
+	color: #fff;
+}
+
+
+.box input {
+	margin: 20px;
+	padding: 10px 0;
+	padding-left: 15px;
+	border-radius: 3px;
+	outline: none;
+	text-decoration: none;
+	box-shadow: none;
+	border: none;
+}
+
+.box textarea {
+	margin: 20px;
+	margin-top: 0;
+	padding-left: 15px;
+	border-radius: 5px;
+	outline: none;
+	text-decoration: none;
+	box-shadow: none;
+	border: none;
+}
+
+//.btn.light {
+//  background-color: #4eafc9;
+//  border: 2px solid #2a89a2;
+//}
+//
+//.btn.red {
+//  background-color: #dda66d;
+//  border: 2px solid #b6821a;
+//}
+//
+//.btn.new {
+//	background-color: #6BE400;
+//	border: 2px solid #469400;
+//	margin-bottom: 25px;
+//}
+//
+//.btn.success{
+//	background-color: #FF7400;
+//	border: 2px solid #A64B00;
+//}
+//
+//.btn.success:hover {
+//	background-color: #FF5300;
+//  	border-color: #A63600;
+//}
+//
+//.btn.new:hover {
+//	background-color: #269926;
+//  	border-color: #008500;
+//}
+//
+//.btn.light:hover {
+//  background-color: #2a89a2;
+//  border-color: #1d6f85;
+//}
+//
+//.btn.red:hover {
+//  background-color: #b6821a;
+//  border-color: #946912;
+//}

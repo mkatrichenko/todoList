@@ -1,104 +1,95 @@
 import React, {Component} from 'react';
-import TodoItem from './TodoItem';
+import ListItem from './ListItem';
 import CreateForm from './forms/Create';
-import '../assets/materialize/scss/materialize.scss';
 import '../scss/app.scss';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isCreate: false,
-      items: [
-        {
-          title: 'ololo1',
-          text: 'kokoko1',
-        },
-        {
-          title: 'ololo2',
-          text: 'kokoko2',
-        },
-        {
-          title: 'ololo3',
-          text: 'kokoko3',
-        },
-      ],
-    };
+	constructor() {
+    	super();
+    	this.state = {
+      	stateCreation: false,
+      	items: [
+        	{
+          	title: 'Title1',
+          	text: 'about1',
+        	},
+        	{
+          	title: 'Title2',
+          	text: 'about2',
+        	},
+        	{
+          	title: 'Title3',
+          	text: 'about3',
+        	},
+      	],
+    	};
+		
+		this.toggleIsCreate =this.toggleIsCreate.bind(this);
+    	this.addTask = this.addTask.bind(this);
+    	this.editItem = this.editItem.bind(this);
+    	this.remove = this.remove.bind(this);
 
-    this.toggleIsCreate = this.toggleIsCreate.bind(this);
-    this.pushNewItem = this.pushNewItem.bind(this);
-    this.editItem = this.editItem.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
   }
+	
+	toggleIsCreate(e) {
+    	e.preventDefault();
+    	this.setState({isCreate: !this.state.isCreate});
+  	}
+	
+	remove(index) {
+		let newItems = this.state.items.slice();
+		newItems.splice(index, 1);
+		this.setState({items: newItems});
+  	}
+	
+	editItem(title, text, index, callback) {
+		const item = {title, text};
+		const newItems = this.state.items.slice();
+		newItems[index] = item;
 
-  componentDidMount() {
-    this.setState({items: this.state.items.reverse()});
-  }
+		this.setState({items: newItems});
+    	callback();
+	}
+	
+	addTask(title, text) {
+    	const item = {title, text};
+    	const newItems = [...this.state.items.slice().reverse(), item].reverse();
 
-  toggleIsCreate(e) {
-    e.preventDefault();
-    this.setState({isCreate: !this.state.isCreate});
-  }
-
-  pushNewItem(title, text) {
-    const item = {title, text};
-    const newItems = [...this.state.items.slice().reverse(), item].reverse();
-
-    this.setState({items: newItems});
-    this.setState({isCreate: !this.state.isCreate});
-  }
-
-  editItem(title, text, index, callback) {
-    const item = {title, text};
-    const newItems = this.state.items.slice();
-    newItems[index] = item;
-
-    this.setState({items: newItems});
-    callback();
-  }
-
-  deleteItem(index) {
-    let newItems = this.state.items.slice();
-    newItems.splice(index, 1);
-
-    this.setState({items: newItems});
-  }
-
-  render() {
-    return (
-        <div id="main">
-          {this.state.isCreate ?
+    	this.setState({items: newItems});
+    	this.setState({isCreate: !this.state.isCreate});
+  	}
+	
+	
+	render() {
+		
+		return(
+			<div className="field">
+				{this.state.isCreate ?
               <CreateForm handler={this.toggleIsCreate}
-                          push={this.pushNewItem}/> :
+                          push={this.addTask}/> :
               null}
-          <div className="fixed-action-btn" onClick={this.toggleIsCreate}>
-            <a className="btn-floating btn-large hoverable">
-              {
-                !this.state.isCreate ?
-                    <i className="large material-icons">add</i>
-                    :
-                    <i className="large material-icons">close</i>
-              }
-
-            </a>
-          </div>
-          <div className="row">
-            <ul className="col l6 m8 s10 card__wrapper" style={this.state.isCreate ? {marginTop: '270px'} : null}>
-              {
+				<button onClick={this.toggleIsCreate} className="btn new">
+					{ !this.state.isCreate ?
+						'New task'
+						:
+						'Close'
+					}
+				</button>
+				<ul >
+				{
                 this.state.items.map((item, index) => {
-                  return <TodoItem key={index}
+                  return <ListItem key={index}
                                    title={item.title}
                                    text={item.text}
                                    index={index}
-                                   deleteItem={this.deleteItem}
+                                   remove={this.remove}
                                    editItem={this.editItem}/>;
                 })
               }
-            </ul>
-          </div>
-        </div>
-    );
-  }
+				</ul>
+      		</div>
+		);
+	}
 }
 
 export default App;

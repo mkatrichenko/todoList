@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(38, 166, 154, 0.1);
+}
+
+p {
+  word-wrap: break-word;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.card__wrapper {
+  float: none;
+  margin-right: auto;
+}
+
+.hoverable {
+  transition: box-shadow 0.3s;
+}

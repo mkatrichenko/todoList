@@ -1,0 +1,29 @@
+.form-create {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  .card {
+    padding: 10px;
+    margin: 0!important;
+  }
+
+  .block__centered {
+    float: none;
+    margin-right: auto;
+  }
+
+  .button__wrapper {
+    width: 100%;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin: 0 5%;
+    }
+  }
+}
